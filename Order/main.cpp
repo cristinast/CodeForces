@@ -1,27 +1,24 @@
 #include <iostream>
-#include <vector>
+#include <queue>
+
 using namespace std;
 
 int main() {
-    int n;
-    std::vector<int> squence(n);
-    cin >> n;
-    for (int i = 0; i < n; i++) {
-        cin >> squence[i];
-    }
-
-    for(int i = 0;i <n;++i){
-        for (int j = 0; j < n; ++j) {
-            if(squence[j]>squence[j+1]){
-                int m =0;
-                m= squence[j];
-                squence[j] = squence[j+1];
-                squence[j+1] = m;
-            }
+    int n,a;
+    std::priority_queue <int,vector<int>,greater<int>> squence;
+    while (cin >> n) {
+        int ins = n;
+        while (n--) {
+            cin >> a;
+            squence.push(a);
         }
-    }
-    for (int i = 1; i < n+1; ++i) {
-        cout << squence[i]<<endl;
+
+        while (ins--) {
+            cout << squence.top() << endl;
+            squence.pop();
+        }
+
+//>
     }
     return 0;
 }
